@@ -51,9 +51,15 @@ def fetch_cost_data(access_token):
 
 def save_to_csv(data, filename):
     with open(filename, 'w') as f:
-        headers = [c['name'] for c in data['columns']]
+        # The Cost Management query API wraps the results under a
+        # ``properties`` field. Access the returned column metadata and
+        # row values from this nested structure.
+        columns = data.get('properties', {}).get('columns', [])
+        rows = data.get('properties', {}).get('rows', [])
+
+        headers = [c['name'] for c in columns]
         f.write(','.join(headers) + '\n')
-        for row in data['rows']:
+        for row in rows:
             f.write(','.join(str(r) for r in row) + '\n')
 
 if __name__ == "__main__":
