@@ -1,0 +1,4 @@
+ResourceGroup,ResourceName,ResourceType,Date,Cost
+rg-demo,vm1,VirtualMachine,2024-05-01,25.45
+rg-demo,vm1,VirtualMachine,2024-05-02,24.88
+rg-demo,storage1,StorageAccount,2024-05-01,3.12
